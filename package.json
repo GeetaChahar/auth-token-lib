@@ -4,6 +4,9 @@
   "description": "",
   "type": "module",
   "main": "dist/auth-token-lib.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"

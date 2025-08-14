@@ -1,7 +1,6 @@
 const path = require("path");
 
 module.exports = {
-  mode: "production",
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -10,6 +9,7 @@ module.exports = {
     libraryTarget: "umd", // works in browser & Node
     globalObject: "this", // fix for Node/browser compatibility
   },
+  mode: "production",
   module: {
     rules: [
       {
