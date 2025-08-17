@@ -80,9 +80,7 @@ import CryptoJS from "crypto-js";
     });
   };
 
-  const encrypt = (email) => {
-    const key = getEncryptionKey();
-    const iv = getEncryptionIV();
+  const encrypt = (email, key = getEncryptionKey(), iv = getEncryptionIV()) => {
     const keyHex = key.map((b) => b.toString(16).padStart(2, "0")).join("");
     const ivHex = iv.map((b) => b.toString(16).padStart(2, "0")).join("");
 
@@ -91,9 +89,11 @@ import CryptoJS from "crypto-js";
     }).toString();
   };
 
-  const decrypt = (cipherText) => {
-    const key = getEncryptionKey();
-    const iv = getEncryptionIV();
+  const decrypt = (
+    cipherText,
+    key = getEncryptionKey(),
+    iv = getEncryptionIV()
+  ) => {
     const keyHex = key.map((b) => b.toString(16).padStart(2, "0")).join("");
     const ivHex = iv.map((b) => b.toString(16).padStart(2, "0")).join("");
 
@@ -106,9 +106,7 @@ import CryptoJS from "crypto-js";
     return decrypted.toString(CryptoJS.enc.Utf8);
   };
 
-  const getUserToken = (email) => {
-    return encrypt(email);
-  };
+  const getUserToken = (email) => encrypt(email);
 
   const injectAuthTokens = (body, user_token, access_token) => {
     return body
